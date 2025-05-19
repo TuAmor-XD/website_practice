@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Drum Kit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .drum-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .drum {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        
+        .drum:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .drum-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .drum-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .play-btn {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .play-btn:hover {
+            background-color: #45a049;
+        }
+        
+        /* Individual drum colors */
+        .snare {
+            border: 3px solid #3498db;
+        }
+        
+        .kick {
+            border: 3px solid #e74c3c;
+        }
+        
+        .hihat {
+            border: 3px solid #f39c12;
+        }
+        
+        .tom {
+            border: 3px solid #9b59b6;
+        }
+        
+        .crash {
+            border: 3px solid #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Drum Kit</h1>
+    <p>Click the buttons or hover over the drums to see them react!</p>
+    
+    <div class="drum-container">
+        <!-- Snare Drum -->
+        <div class="drum snare" onclick="playSound('snare')">
+            <div class="drum-icon">🥁</div>
+            <div class="drum-name">Snare Drum</div>
+            <button class="play-btn" onclick="playSound('snare'); event.stopPropagation()">Play</button>
+        </div>
+        
+        <!-- Kick Drum -->
+        <div class="drum kick" onclick="playSound('kick')">
+            <div class="drum-icon">🦶</div>
+            <div class="drum-name">Kick Drum</div>
+            <button class="play-btn" onclick="playSound('kick'); event.stopPropagation()">Play</button>
+        </div>
+        
+        <!-- Hi-Hat -->
+        <div class="drum hihat" onclick="playSound('hihat')">
+            <div class="drum-icon">🎩</div>
+            <div class="drum-name">Hi-Hat</div>
+            <button class="play-btn" onclick="playSound('hihat'); event.stopPropagation()">Play</button>
+        </div>
+        
+        <!-- Tom -->
+        <div class="drum tom" onclick="playSound('tom')">
+            <div class="drum-icon">🎯</div>
+            <div class="drum-name">Tom</div>
+            <button class="play-btn" onclick="playSound('tom'); event.stopPropagation()">Play</button>
+        </div>
+        
+        <!-- Crash Cymbal -->
+        <div class="drum crash" onclick="playSound('crash')">
+            <div class="drum-icon">💥</div>
+            <div class="drum-name">Crash Cymbal</div>
+            <button class="play-btn" onclick="playSound('crash'); event.stopPropagation()">Play</button>
+        </div>
+    </div>
+
+    <script>
+        function playSound(drumType) {
+            let sound;
+            
+            switch(drumType) {
+                case 'snare':
+                    sound = new Audio('sounds/snare.mp3');
+                    break;
+                case 'kick':
+                    sound = new Audio('sounds/kick.mp3');
+                    break;
+                case 'hihat':
+                    sound = new Audio('sounds/hihat.mp3');
+                    break;
+                case 'tom':
+                    sound = new Audio('sounds/tom.mp3');
+                    break;
+                case 'crash':
+                    sound = new Audio('sounds/crash.mp3');
+                    break;
+                default:
+                    console.log('Unknown drum type');
+                    return;
+            }
+            
+            sound.play();
+        }
+    </script>
+</body>
+</html>
